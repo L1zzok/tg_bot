@@ -46,7 +46,7 @@ def lalala(message):
 			con = sqlite3.connect(r"db.db", check_same_thread=False)
 			cursor = con.cursor()
 			markup = types.InlineKeyboardMarkup(row_width=2)
-			print(find_category_user(cursor,message.chat.id))
+
 			if find_category_user(cursor,message.chat.id) == None:
 				bot.send_message(message.chat.id, "Вы не подписаны ни на одну категорию ")
 			else:

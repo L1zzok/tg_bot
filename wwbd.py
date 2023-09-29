@@ -1,5 +1,6 @@
 # импортируем библиотеку для работы с базой данных
 import sqlite3
+from config import *
 
 # создали подключение к бд. если такой базы нет, то она создастся сама
 con = sqlite3.connect(r"db.db", check_same_thread=False)
@@ -13,6 +14,11 @@ cursor.execute(
 # создали таблицу категории в базе, если ее еще нет
 cursor.execute(
     '''CREATE TABLE IF NOT EXISTS "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT,"name" TEXT NOT NULL, "value" TEXT NOT NULL); ''')
+
+k = 0
+while k < 7:
+    cursor.execute('''INSERT INTO categories(name,value) VALUES (categ_name[k], categ_value[k]);''')
+    k +=1
 
 # cursor.execute('''INSERT INTO categories(name,value) VALUES ("Спорт", "sports");''')
 # cursor.execute('''INSERT INTO categories(name,value) VALUES ("Бизнес", "business");''')
