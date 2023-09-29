@@ -25,15 +25,6 @@ if find_count_category(cursor) < 7:
         cursor.execute('''INSERT INTO categories(name,value) VALUES (?, ?);''', (categ_name[k],categ_value[k]))
         k +=1
 
-
-# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Спорт", "sports");''')
-# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Бизнес", "business");''')
-# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Развлечение", "entertainment");''')
-# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Главное", "general");''')
-# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Здоровье", "health");''')
-# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Наука", "science");''')
-# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Технология", "technology");''')
-
 # создали таблицу подписки в базе, если ее еще нет
 cursor.execute(
     '''CREATE TABLE IF NOT EXISTS "subscribes" ( "id_user" INTEGER NOT NULL, "id_category" INTEGER NOT NULL, FOREIGN KEY ("id_user") REFERENCES users("id"), FOREIGN KEY ("id_category") REFERENCES categories("id") )''')
