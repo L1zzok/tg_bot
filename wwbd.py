@@ -14,11 +14,17 @@ cursor.execute(
 # создали таблицу категории в базе, если ее еще нет
 cursor.execute(
     '''CREATE TABLE IF NOT EXISTS "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT,"name" TEXT NOT NULL, "value" TEXT NOT NULL); ''')
+# cursor.execute('''DROP TABLE categories;''')
+def find_count_category(cursor):
+    cat = cursor.execute('''SELECT COUNT(*) FROM categories;''').fetchone()
+    return cat[0]
 
 k = 0
-while k < 7:
-    cursor.execute('''INSERT INTO categories(name,value) VALUES (categ_name[k], categ_value[k]);''')
-    k +=1
+if find_count_category(cursor) < 7:
+    while k < 7:
+        cursor.execute('''INSERT INTO categories(name,value) VALUES (?, ?);''', (categ_name[k],categ_value[k]))
+        k +=1
+
 
 # cursor.execute('''INSERT INTO categories(name,value) VALUES ("Спорт", "sports");''')
 # cursor.execute('''INSERT INTO categories(name,value) VALUES ("Бизнес", "business");''')
@@ -57,8 +63,7 @@ def delete_user(connection, cursor, login):
 
 
 # функция по поиску категории
-def find_category(cursor, name):
-    return cursor.execute('''SELECT * FROM categories WHERE name=?;''', (name,)).fetchone()
+
 
 
 # функция добавления категории
