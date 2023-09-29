@@ -81,18 +81,18 @@ def callback_inline(call):
 				con = sqlite3.connect(r"db.db", check_same_thread=False)
 				cursor = con.cursor()
 				if find_category_in_sub(cursor,call.message.chat.id, "Спорт") == None:
-					sub_category(con, cursor, "Спорт" ,call.message.chat.id)
+					sub_category(con, cursor, "Спорт", call.message.chat.id)
 					bot.send_message(call.message.chat.id, "Вы подписались на спортивные новости")
 				else:
 					bot.send_message(call.message.chat.id, "Вы уже подписаны на спортивные новости")
-			elif call.data == "про_Красота":
+			elif call.data == "про_Бизнес":
 				con = sqlite3.connect(r"db.db", check_same_thread=False)
 				cursor = con.cursor()
-				if find_category_in_sub(cursor, call.message.chat.id, "Красота") == None:
-					sub_category(con, cursor, "Красота", call.message.chat.id)
-					bot.send_message(call.message.chat.id, "Вы подписались на бьюти новости")
+				if find_category_in_sub(cursor, call.message.chat.id, "Бизнес") == None:
+					sub_category(con, cursor, "Бизнес", call.message.chat.id)
+					bot.send_message(call.message.chat.id, "Вы подписались на бизнес новости")
 				else:
-					bot.send_message(call.message.chat.id, "Вы уже подписаны на бьюти новости")
+					bot.send_message(call.message.chat.id, "Вы уже подписаны на бизнес новости")
 			elif call.data == "про_Здоровье":
 				con = sqlite3.connect(r"db.db", check_same_thread=False)
 				cursor = con.cursor()
@@ -101,22 +101,38 @@ def callback_inline(call):
 					bot.send_message(call.message.chat.id, "Вы подписались на новости о здоровье")
 				else:
 					bot.send_message(call.message.chat.id, "Вы уже подписаны на новости о здоровье")
-			elif call.data == "про_Игры":
+			elif call.data == "про_Развлечение":
 				con = sqlite3.connect(r"db.db", check_same_thread=False)
 				cursor = con.cursor()
-				if find_category_in_sub(cursor, call.message.chat.id, "Игры") == None:
-					sub_category(con, cursor, "Игры", call.message.chat.id)
-					bot.send_message(call.message.chat.id, "Вы подписались на игровые новости")
+				if find_category_in_sub(cursor, call.message.chat.id, "Развлечение") == None:
+					sub_category(con, cursor, "Развлечение", call.message.chat.id)
+					bot.send_message(call.message.chat.id, "Вы подписались на новости о развлечениях")
 				else:
-					bot.send_message(call.message.chat.id, "Вы уже подписаны на игровые новости")
-			elif call.data == "про_Политика":
+					bot.send_message(call.message.chat.id, "Вы уже подписаны на новости о развлечениях")
+			elif call.data == "про_Главное":
 				con = sqlite3.connect(r"db.db", check_same_thread=False)
 				cursor = con.cursor()
-				if find_category_in_sub(cursor, call.message.chat.id, "Политика") == None:
-					sub_category(con, cursor, "Политика", call.message.chat.id)
-					bot.send_message(call.message.chat.id, "Вы подписались на политические новости")
+				if find_category_in_sub(cursor, call.message.chat.id, "Главное") == None:
+					sub_category(con, cursor, "Главное", call.message.chat.id)
+					bot.send_message(call.message.chat.id, "Вы подписались на главные новости")
 				else:
-					bot.send_message(call.message.chat.id, "Вы уже подписаны на политические новости")
+					bot.send_message(call.message.chat.id, "Вы уже подписаны на главные новости")
+			elif call.data == "про_Наука":
+				con = sqlite3.connect(r"db.db", check_same_thread=False)
+				cursor = con.cursor()
+				if find_category_in_sub(cursor, call.message.chat.id, "Наука") == None:
+					sub_category(con, cursor, "Наука", call.message.chat.id)
+					bot.send_message(call.message.chat.id, "Вы подписались на научные новости")
+				else:
+					bot.send_message(call.message.chat.id, "Вы уже подписаны на научные новости")
+			elif call.data == "про_Технология":
+				con = sqlite3.connect(r"db.db", check_same_thread=False)
+				cursor = con.cursor()
+				if find_category_in_sub(cursor, call.message.chat.id, "Технология") == None:
+					sub_category(con, cursor, "Технология", call.message.chat.id)
+					bot.send_message(call.message.chat.id, "Вы подписались на технологические новости")
+				else:
+					bot.send_message(call.message.chat.id, "Вы уже подписаны на технологические новости")
 
 
 			elif call.data == "отп_Спорт":
@@ -124,33 +140,43 @@ def callback_inline(call):
 				cursor = con.cursor()
 				unsub_category(con, cursor, "Спорт", call.message.chat.id)
 				bot.send_message(call.message.chat.id, "Вы отписались от спортивных новостей")
-			elif call.data == "отп_Красота":
+			elif call.data == "отп_Бизнес":
 				con = sqlite3.connect(r"db.db", check_same_thread=False)
 				cursor = con.cursor()
-				unsub_category(con, cursor, "Красота", call.message.chat.id)
-				bot.send_message(call.message.chat.id, "Вы отписались от бьюти новостей")
+				unsub_category(con, cursor, "Бизнес", call.message.chat.id)
+				bot.send_message(call.message.chat.id, "Вы отписались от новостей о бизнесе")
 			elif call.data == "отп_Здоровье":
 				con = sqlite3.connect(r"db.db", check_same_thread=False)
 				cursor = con.cursor()
 				unsub_category(con, cursor, "Здоровье", call.message.chat.id)
 				bot.send_message(call.message.chat.id, "Вы отписались от новостей о здоровье")
-			elif call.data == "отп_Игры":
+			elif call.data == "отп_Развлечение":
 				con = sqlite3.connect(r"db.db", check_same_thread=False)
 				cursor = con.cursor()
-				unsub_category(con, cursor, "Игры", call.message.chat.id)
-				bot.send_message(call.message.chat.id, "Вы отписались от игровых новостей")
-			elif call.data == "отп_Политика":
+				unsub_category(con, cursor, "Развлечение", call.message.chat.id)
+				bot.send_message(call.message.chat.id, "Вы отписались от новостей о развлечениях")
+			elif call.data == "отп_Главное":
 				con = sqlite3.connect(r"db.db", check_same_thread=False)
 				cursor = con.cursor()
-				unsub_category(con, cursor, "Политика", call.message.chat.id)
-				bot.send_message(call.message.chat.id, "Вы отписались от политических новостей")
+				unsub_category(con, cursor, "Главное", call.message.chat.id)
+				bot.send_message(call.message.chat.id, "Вы отписались от главных новостей")
+			elif call.data == "отп_Наука":
+				con = sqlite3.connect(r"db.db", check_same_thread=False)
+				cursor = con.cursor()
+				unsub_category(con, cursor, "Наука", call.message.chat.id)
+				bot.send_message(call.message.chat.id, "Вы отписались от научных новостей")
+			elif call.data == "отп_Технология":
+				con = sqlite3.connect(r"db.db", check_same_thread=False)
+				cursor = con.cursor()
+				unsub_category(con, cursor, "Технология", call.message.chat.id)
+				bot.send_message(call.message.chat.id, "Вы отписались от новостей о технологиях")
 
 
 
 
 			elif call.data == "под_Спорт":
 				url = ('https://newsapi.org/v2/everything?'
-					   'q=Спорт&'
+					   'q=sports&'
 					   'language=ru&'
 					   'pageSize=1&'
 					   'sortBy=popularity&'
@@ -162,9 +188,9 @@ def callback_inline(call):
 				url = response['articles'][0]['url']
 				bot.send_message(call.message.chat.id,f"{titl}\n\n{description}\nПодробнее можно прочитать здесь:\n{url}")
 
-			elif call.data == "под_Красота":
+			elif call.data == "под_Бизнес":
 				url = ('https://newsapi.org/v2/everything?'
-					   'q=Красота&'
+					   'q=business&'
 					   'language=ru&'
 					   'pageSize=1&'
 					   'sortBy=popularity&'
@@ -178,7 +204,7 @@ def callback_inline(call):
 
 			elif call.data == "под_Здоровье":
 				url = ('https://newsapi.org/v2/everything?'
-					   'q=Здоровье&'
+					   'q=health&'
 					   'language=ru&'
 					   'pageSize=1&'
 					   'sortBy=popularity&'
@@ -190,9 +216,9 @@ def callback_inline(call):
 				url = response['articles'][0]['url']
 				bot.send_message(call.message.chat.id,f"{titl}\n\n{description}\nПодробнее можно прочитать здесь:\n{url}")
 
-			elif call.data == "под_Игры":
+			elif call.data == "под_Развлечение":
 				url = ('https://newsapi.org/v2/everything?'
-					   'q=Игры&'
+					   'q=entertaiment&'
 					   'language=ru&'
 					   'pageSize=1&'
 					   'sortBy=popularity&'
@@ -204,9 +230,37 @@ def callback_inline(call):
 				url = response['articles'][0]['url']
 				bot.send_message(call.message.chat.id,f"{titl}\n\n{description}\nПодробнее можно прочитать здесь:\n{url}")
 
-			elif call.data == "под_Политика":
+			elif call.data == "под_Главное":
 				url = ('https://newsapi.org/v2/everything?'
-					   'q=Политика&'
+					   'q=general&'
+					   'language=ru&'
+					   'pageSize=1&'
+					   'sortBy=popularity&'
+					   f'apiKey={key_news}')
+
+				response = requests.get(url).json()
+				titl = response['articles'][0]['title']
+				description = response['articles'][0]['description']
+				url = response['articles'][0]['url']
+				bot.send_message(call.message.chat.id, f"{titl}\n\n{description}\nПодробнее можно прочитать здесь:\n{url}")
+
+			elif call.data == "под_Наука":
+				url = ('https://newsapi.org/v2/everything?'
+					   'q=science&'
+					   'language=ru&'
+					   'pageSize=1&'
+					   'sortBy=popularity&'
+					   f'apiKey={key_news}')
+
+				response = requests.get(url).json()
+				titl = response['articles'][0]['title']
+				description = response['articles'][0]['description']
+				url = response['articles'][0]['url']
+				bot.send_message(call.message.chat.id, f"{titl}\n\n{description}\nПодробнее можно прочитать здесь:\n{url}")
+
+			elif call.data == "под_Технология":
+				url = ('https://newsapi.org/v2/everything?'
+					   'q=technology&'
 					   'language=ru&'
 					   'pageSize=1&'
 					   'sortBy=popularity&'

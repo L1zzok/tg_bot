@@ -12,7 +12,15 @@ cursor.execute(
     '''CREATE TABLE IF NOT EXISTS "users" ("id" INTEGER NOT NULL,"login" TEXT NOT NULL, primary key("id" AUTOINCREMENT));''')
 # создали таблицу категории в базе, если ее еще нет
 cursor.execute(
-    '''CREATE TABLE IF NOT EXISTS "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT,"name" TEXT NOT NULL); ''')
+    '''CREATE TABLE IF NOT EXISTS "categories" ("id" INTEGER PRIMARY KEY AUTOINCREMENT,"name" TEXT NOT NULL, "value" TEXT NOT NULL); ''')
+
+# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Спорт", "sports");''')
+# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Бизнес", "business");''')
+# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Развлечение", "entertainment");''')
+# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Главное", "general");''')
+# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Здоровье", "health");''')
+# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Наука", "science");''')
+# cursor.execute('''INSERT INTO categories(name,value) VALUES ("Технология", "technology");''')
 
 # создали таблицу подписки в базе, если ее еще нет
 cursor.execute(
